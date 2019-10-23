@@ -6,8 +6,6 @@ import re
 import math
 import os, glob, sys, threading
 import scipy.io
-
-#from tqdm  import tqdm 
 from scipy import ndimage, misc
 from keras import backend as K
 from keras import optimizers, regularizers
