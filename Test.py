@@ -41,14 +41,14 @@ time_c = 0
 #BY means of for loop, image dimension changes dynamically
 
 for im_name in os.listdir(data_path):
-    img_raw = image.load_img(data_path+im_name)
-    img_ycbcr = img_raw.convert('YCbCr')
-    img, cb, cr = img_ycbcr.split()
-    row=np.size(img, 0)
-    col=np.size(img, 1)
+	img_raw = image.load_img(data_path+im_name)
+    	img_ycbcr = img_raw.convert('YCbCr')
+    	img, cb, cr = img_ycbcr.split()
+    	row=np.size(img, 0)
+    	col=np.size(img, 1)
 
 #Initialize final image
-    img_final = np.zeros((row, col, 3), dtype = 'float32')
+    	img_final = np.zeros((row, col, 3), dtype = 'float32')
 
 #Actual Testing begins here
 	x = image.img_to_array(img)
@@ -65,17 +65,17 @@ for im_name in os.listdir(data_path):
     #Reshaping CbCr channels
 	cb = image.img_to_array(cb)
 	cb = np.reshape(cb, (row, col))
-    cb = cb.astype('float32') / 255
-    cr = image.img_to_array(cr)
+    	cb = cb.astype('float32') / 255
+    	cr = image.img_to_array(cr)
 	cr = np.reshape(cr, (row, col))
-    cr = cr.astype('float32') / 255
+    	cr = cr.astype('float32') / 255
     
-    img_final[:,:,0] = test_img
-    img_final[:,:,1] = cr
-    img_final[:,:,2] = cb
+    	img_final[:,:,0] = test_img
+    	img_final[:,:,1] = cr
+    	img_final[:,:,2] = cb
 	img_final = cv2.cvtColor(img_final, cv2.COLOR_YCrCb2RGB)
 
-    imsave(path+'/im'+str(count)+'.png', img_final)
+    	imsave(path+'/im'+str(count)+'.png', img_final)
 	count += 1
 	print ("Image Number:",count)
 print ("Total Time:",time_c)
