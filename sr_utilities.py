@@ -66,7 +66,7 @@ def image_gen(target_list):
 		for step in range(len(target_list)//BATCH_SIZE):
 			offset = step*BATCH_SIZE
 			batch_x, batch_y = get_image_batch(target_list, offset)
-			yield (batch_x, [batch_y, batch_y, batch_y])
+			yield (batch_x, batch_y)
 
 
 def PSNR(y_true, y_pred):
